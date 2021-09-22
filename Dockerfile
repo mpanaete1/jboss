@@ -26,12 +26,12 @@ COPY --from=build /home/app/target/spring-boot-hello-world-0.0.1-SNAPSHOT.jar /o
 
 
 RUN echo "JAVA_OPTS=\"\$JAVA_OPTS -Djboss.bind.address=0.0.0.0 -Djboss.bind.address.management=0.0.0.0\"" >> /opt/jboss/bin/standalone.conf && \
-	/opt/jboss/bin/add-user.sh admin admin@18 -s && \
-	chown -R jboss:jboss /opt/jboss
+	/opt/jboss/bin/add-user.sh admin admin@18 -s 
+#	chown -R jboss:jboss /opt/jboss
 
 EXPOSE 8080 9990 9999 
 
-USER jboss 
+USER root
 
 ENTRYPOINT /opt/jboss/bin/standalone.sh -c standalone-full-ha.xml 
 

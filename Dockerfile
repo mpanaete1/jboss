@@ -6,7 +6,7 @@ COPY pom.xml /home/app/pom.xml
 
 RUN mvn -f /home/app/pom.xml clean package 
 
-FROM ubi8 
+FROM redhat/ubi8
 
 MAINTAINER phoesi@gmail.com 
 
